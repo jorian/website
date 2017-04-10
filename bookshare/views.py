@@ -1,5 +1,6 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
+from bookshare.models import Book
 import datetime
 
 
@@ -19,3 +20,16 @@ def hours_ahead(request, offset):
     dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
     html = "In %s hours, it will be %s." % (offset, dt)
     return HttpResponse(html)
+
+
+def search(request):
+    error = False
+    if 'q' in request.GET:
+        q = request.GET['q']
+        if not q:
+            error = True
+        else:
+            books = Book.objects.filter(title__icontains=q)
+            return render(request, 'search_result.html',
+                          {'books': books, 'query': q})
+    return render(request, 'search_form.html', {'error': error})
