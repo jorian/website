@@ -41,11 +41,7 @@ def search(request):
 
 
 def meta_data(request):
-    values = request.META.items()
-    html = []
-    for k, v in values:
-        html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
-    return HttpResponse('<table>%s</table>' % '\n'.join(html))
+    return render(request, 'metadata.html', {'values': request.META.items()})
 
 
 def contact(request):
