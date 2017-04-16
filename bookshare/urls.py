@@ -6,5 +6,6 @@ urlpatterns = [
     url(r'^time/$', views.current_datetime),
     url(r'^time/plus/(\d{1,2})/$', views.hours_ahead),
     url(r'^search/$', views.search),
-    url(r'^metadata/$', views.meta_data)
+    url(r'^metadata/$', views.meta_data),
+    url(r'^contact/$', views.contact),
 ]
