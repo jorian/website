@@ -1,3 +1,8 @@
 body{
     background: rgba(160, 160, 210, 0.45);
 }
+
+.navbar{
+    border-radius: 0;
+}
+

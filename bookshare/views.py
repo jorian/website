@@ -8,7 +8,7 @@ import datetime
 
 
 def index(request):
-    return HttpResponse("Hello there!")
+    return render(request, 'index.html')
 
 
 def current_datetime(request):
